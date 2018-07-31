@@ -8,7 +8,8 @@ class Client
 
     private $body = [];
 
-    public function __construct($apiKey) {
+    public function __construct($apiKey)
+    {
         if (!validateAuthentication($apiKey)) {
             throw Exception('You must supply a valid Api Key');
         }
@@ -16,11 +17,13 @@ class Client
         $this->bindToBody($apiKey);
     }
 
-    private function bindToBody($apiKey) {
+    private function bindToBody($apiKey)
+    {
         return array_merge($body, ['apiKey' => $apiKey]);
     }
 
-    private function validateAuthentication($apiKey) {
+    private function validateAuthentication($apiKey)
+    {
         if (empty($apiKey) || is_null($apiKey)) {
             return false;
         }
@@ -28,4 +31,3 @@ class Client
         return true;
     }
 }
-
